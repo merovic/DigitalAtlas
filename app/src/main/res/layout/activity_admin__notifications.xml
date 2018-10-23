@@ -6,27 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.mhmd.digitalatlas.Admin_Notifications">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="0dp"
-        android:background="#00bfff"
-        android:theme="?attr/actionBarTheme">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="Notifications"
-                android:textAlignment="center"
-                android:textColor="#ffffff"
-                android:textSize="30sp" />
-        </RelativeLayout>
-    </android.support.v7.widget.Toolbar>
+    tools:context="com.compubase.mhmd.digitalatlas.Admin_Notifications">
+
+
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,7 +43,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/rounded_button"
         android:text="Send"
         android:textColor="#fff"

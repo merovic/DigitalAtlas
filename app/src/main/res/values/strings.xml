@@ -8,4 +8,13 @@
     <string name="username">Username</string>
     <string name="digital_atlas">Digital Atlas</string>
     <string name="logoview">logoView</string>
+    <string-array name="genders">
+        <item>Gender</item>
+    </string-array>
+    <string-array name="ages">
+        <item>Age</item>
+    </string-array>
+    <string-array name="systems">
+        <item>System</item>
+    </string-array>
 </resources>
