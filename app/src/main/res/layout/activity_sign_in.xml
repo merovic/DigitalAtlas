@@ -37,15 +37,14 @@
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/mainlogo"
+            android:background="@drawable/kaud"
             android:contentDescription="@string/logoview" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/digital_atlas"
                 android:textSize="40sp"
-                android:textColor="#3366ff"
-                />
+                android:textColor="#3366ff"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

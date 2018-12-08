@@ -56,7 +56,7 @@ public class SignIn extends AppCompatActivity {
     }
     private void volleyConnection()
     {
-        GET_JSON_DATA_HTTP_URL = "http://atlas.alosboiya.com.sa/atlas.asmx/login_campany?";
+        GET_JSON_DATA_HTTP_URL = "http://atlas.alosboiya.com.sa/atlasnew.asmx/login_campany?";
         // http://atlas.alosboiya.com.sa/atlas.asmx?op=login_campany
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_JSON_DATA_HTTP_URL,
@@ -64,7 +64,7 @@ public class SignIn extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        showMessage(response);
+
                         if (Objects.equals(response, "False"))
                         {
 
@@ -74,14 +74,20 @@ public class SignIn extends AppCompatActivity {
                         {
                             Intent adminintent = new Intent(SignIn.this,AdminMain.class);
                             startActivity(adminintent);
-                            tinyDB.putString("type","http://atlas.alosboiya.com.sa//atlas.asmx//select_all_pat_for_admin");
+                            tinyDB.putString("type","http://atlas.alosboiya.com.sa/atlasnew.asmx/select_all_pat_for_admin");
                             tinyDB.putString("type","admin");
-                        }else
-                        {
+                        }else if(response.contains("reviewer"))
+                            {
+                                Intent adminintent = new Intent(SignIn.this,ReviewerActivty.class);
+                                startActivity(adminintent);
+                                tinyDB.putString("type","http://atlas.alosboiya.com.sa/atlasnew.asmx/select_all_pat_for_admin");
+                                tinyDB.putString("type","reviewer");
+                            }
+                        else{
                             Intent intent = new Intent(SignIn.this,MainActivity.class);
                             startActivity(intent);
                             tinyDB.putString("userID",response);
-                            tinyDB.putString("link","http://atlas.alosboiya.com.sa//atlas.asmx/select_pat_by_iduser");
+                            tinyDB.putString("link","http://atlas.alosboiya.com.sa/atlasnew.asmx/select_pat_by_iduser");
                             tinyDB.putString("type","user");
                         }
                     }

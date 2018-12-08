@@ -1,6 +1,8 @@
 package com.compubase.mhmd.digitalatlas;
 
 public class NotificationUser {
+
+    private String ID;
     private String sender ;
     private String title;
     private String body;
@@ -27,6 +29,14 @@ public class NotificationUser {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }
 

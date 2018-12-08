@@ -1,10 +1,10 @@
 package com.compubase.mhmd.digitalatlas;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,46 +16,44 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-public class Regestration extends AppCompatActivity {
+
+public class AddMessageActivity extends AppCompatActivity {
+
+    EditText message;
+    Button save;
 
     String GET_JSON_DATA_HTTP_URL;
-    EditText studentId,fn,ln,email,pass,phone,position,username;
-    Button register;
-    CheckBox checkBox;
+
+    String id;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_regestration);
-        studentId = findViewById(R.id.studentid);
-        fn = findViewById(R.id.fn);
-        ln = findViewById(R.id.ln);
-        email = findViewById(R.id.email);
-        position = findViewById(R.id.position);
-        register = findViewById(R.id.register);
-        pass = findViewById(R.id.password);
-        phone = findViewById(R.id.mobnum);
-        username =findViewById(R.id.username);
-        checkBox = findViewById(R.id.checkbox);
-        register.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_add_message);
+
+        message = findViewById(R.id.message);
+        save = findViewById(R.id.save);
+
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkBox.isChecked())
-                {
-                    volleyConnection();
-                }else
-                    {
-                        showMessage("Check the box first");
-                    }
+
+                volleyConnection();
+
             }
         });
 
+        Bundle extras = getIntent().getExtras();
+
+        assert extras != null;
+        id = extras.getString("ID");
     }
 
 
     private void volleyConnection()
     {
-        GET_JSON_DATA_HTTP_URL = "http://atlas.alosboiya.com.sa/atlasnew.asmx/insert_user?";
+        GET_JSON_DATA_HTTP_URL = "http://atlas.alosboiya.com.sa/atlasnew.asmx/update_messsage?";
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_JSON_DATA_HTTP_URL,
 
@@ -63,7 +61,7 @@ public class Regestration extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         if(Objects.equals(response, "True")){
-                            showMessage("Registration  Done Successful Congratulations");
+                            showMessage("Add  Done Successful Congratulations");
 
                             onBackPressed();
 
@@ -84,14 +82,8 @@ public class Regestration extends AppCompatActivity {
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<>();
-                params.put("name", fn.getText().toString());
-                params.put("phone", phone.getText().toString());
-                params.put("email", email.getText().toString());
-                params.put("password", pass.getText().toString());
-                params.put("companyname", studentId.getText().toString());
-                params.put("postion", position.getText().toString());
-                params.put("lastname", ln.getText().toString());
-                params.put("username", username.getText().toString());
+                params.put("id", id);
+                params.put("messsage", message.getText().toString());
 
                 return params;
             }
@@ -103,9 +95,8 @@ public class Regestration extends AppCompatActivity {
         RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
 
-
-
     private void showMessage(String _s) {
         Toast.makeText(getApplicationContext(), _s, Toast.LENGTH_LONG).show();
     }
+
 }

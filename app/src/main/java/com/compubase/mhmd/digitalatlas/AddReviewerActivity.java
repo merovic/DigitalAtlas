@@ -1,10 +1,12 @@
 package com.compubase.mhmd.digitalatlas;
 
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,46 +18,54 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-public class Regestration extends AppCompatActivity {
+
+public class AddReviewerActivity extends Fragment {
 
     String GET_JSON_DATA_HTTP_URL;
     EditText studentId,fn,ln,email,pass,phone,position,username;
     Button register;
-    CheckBox checkBox;
+    View view;
+
+
+    public AddReviewerActivity() {
+        // Required empty public constructor
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+
+        view = inflater.inflate(R.layout.fragment_add_reviewer, container, false);
+        return view;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_regestration);
-        studentId = findViewById(R.id.studentid);
-        fn = findViewById(R.id.fn);
-        ln = findViewById(R.id.ln);
-        email = findViewById(R.id.email);
-        position = findViewById(R.id.position);
-        register = findViewById(R.id.register);
-        pass = findViewById(R.id.password);
-        phone = findViewById(R.id.mobnum);
-        username =findViewById(R.id.username);
-        checkBox = findViewById(R.id.checkbox);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        studentId = view.findViewById(R.id.studentid);
+        fn = view.findViewById(R.id.fn);
+        ln = view.findViewById(R.id.ln);
+        email = view.findViewById(R.id.email);
+        position = view.findViewById(R.id.position);
+        register = view.findViewById(R.id.register);
+        pass = view.findViewById(R.id.password);
+        phone = view.findViewById(R.id.mobnum);
+        username = view.findViewById(R.id.username);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkBox.isChecked())
-                {
-                    volleyConnection();
-                }else
-                    {
-                        showMessage("Check the box first");
-                    }
+                volleyConnection();
             }
         });
-
     }
+
 
 
     private void volleyConnection()
     {
-        GET_JSON_DATA_HTTP_URL = "http://atlas.alosboiya.com.sa/atlasnew.asmx/insert_user?";
+        GET_JSON_DATA_HTTP_URL = "http://atlas.alosboiya.com.sa/atlasnew.asmx/insert_reviewer?";
+        // http://atlas.alosboiya.com.sa/atlas.asmx?op=login_campany
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_JSON_DATA_HTTP_URL,
 
@@ -63,9 +73,7 @@ public class Regestration extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         if(Objects.equals(response, "True")){
-                            showMessage("Registration  Done Successful Congratulations");
-
-                            onBackPressed();
+                            showMessage("Adding  Done Successful Congratulations");
 
                         }else {
                             showMessage("Failed Please Try Again ");
@@ -100,12 +108,12 @@ public class Regestration extends AppCompatActivity {
 
         };
 
-        RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+        RequestHandler.getInstance(getActivity()).addToRequestQueue(stringRequest);
     }
-
 
 
     private void showMessage(String _s) {
-        Toast.makeText(getApplicationContext(), _s, Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), _s, Toast.LENGTH_LONG).show();
     }
+
 }

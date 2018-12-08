@@ -1,11 +1,10 @@
 package com.compubase.mhmd.digitalatlas;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -38,7 +37,7 @@ public class Admin_Notifications extends AppCompatActivity {
     }
     public void volleyconnect()
     {
-        GET_JSON_DATA_HTTP_URL = "http://atlas.alosboiya.com.sa/atlas.asmx?op=note";
+        GET_JSON_DATA_HTTP_URL = "http://atlas.alosboiya.com.sa/atlasnew.asmx?op=note";
         // http://atlas.alosboiya.com.sa/atlas.asmx?op=note
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_JSON_DATA_HTTP_URL,
 

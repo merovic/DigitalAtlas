@@ -12,20 +12,36 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="0dp"
-        android:background="#00bfff"
-        android:theme="?attr/actionBarTheme">
+        android:background="#00bfff">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp">
             <TextView
-                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="Main User "
                 android:textAlignment="center"
                 android:textColor="#ffffff"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:id="@+id/titlemainuser"/>
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/logout"
+                android:background="@drawable/logout"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"/>
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/toimportant"
+                android:background="@drawable/deliver"
+                android:layout_marginBottom="5dp"
+                />
+
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
@@ -44,96 +60,96 @@
         android:layout_height="50dp"
         android:layout_weight="0"
         >
-            <android.support.v7.widget.CardView
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="#fff"
+            app:cardElevation="15dp"
+            app:cardCornerRadius="1.5dp"
+            android:layout_alignParentBottom="true"
+            >
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="#fff"
-                app:cardElevation="15dp"
-                app:cardCornerRadius="1.5dp"
-                android:layout_alignParentBottom="true"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <ImageButton
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:gravity="center"
-                        android:layout_weight="1">
-                        <ImageButton
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/add"
-                            android:layout_weight="1"
-                            android:scaleType="fitCenter"
-                            android:layout_marginTop="5dp"
-                            android:id="@+id/addfinfing"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Add Finding"
-                            android:gravity="center"
-                            android:layout_gravity="center"
-                            android:textSize="15sp"/>
-                    </LinearLayout>
-                    <LinearLayout
+                        android:background="@drawable/add"
+                        android:layout_weight="1"
+                        android:scaleType="fitCenter"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/addfinfing"
+                        />
+                    <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"
+                        android:text="Add Finding"
                         android:gravity="center"
-                        android:layout_weight="1">
-                        <ImageButton
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/lists"
-                            android:layout_weight="1"
-                            android:scaleType="fitCenter"
-                            android:layout_marginTop="5dp"
-                            android:id="@+id/plistbutton"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Patient List"
-                            android:gravity="center"
-                            android:layout_gravity="center"
-                            android:textSize="15sp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
                         android:layout_gravity="center"
-                        android:gravity="center"
-                        android:layout_weight="1">
-                        <ImageButton
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ring"
-                            android:layout_weight="1"
-                            android:scaleType="fitCenter"
-                            android:layout_marginTop="5dp"
-                            android:id="@+id/usernotific"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Notifications"
-                            android:gravity="center"
-                            android:layout_gravity="center"
-                            android:textSize="15sp"/>
-                    </LinearLayout>
+                        android:textSize="15sp"/>
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <ImageButton
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/lists"
+                        android:layout_weight="1"
+                        android:scaleType="fitCenter"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/plistbutton"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Patient List"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <ImageButton
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ring"
+                        android:layout_weight="1"
+                        android:scaleType="fitCenter"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/usernotific"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notifications"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
     </RelativeLayout>
 
 </LinearLayout>

@@ -102,7 +102,7 @@ public class Addfinding3 extends Fragment {
     }
     private void volleyConnection()
     {
-        String GET_JSON_DATA_HTTP_URL = "http://atlas.alosboiya.com.sa/atlas.asmx?op=insert_pat?";
+        String GET_JSON_DATA_HTTP_URL = "http://atlas.alosboiya.com.sa/atlasnew.asmx?op=insert_pat?";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_JSON_DATA_HTTP_URL,
 
                 new Response.Listener<String>() {

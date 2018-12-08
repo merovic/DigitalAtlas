@@ -10,8 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="0dp"
-        android:background="#00bfff"
-        android:theme="?attr/actionBarTheme">
+        android:background="#00bfff">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

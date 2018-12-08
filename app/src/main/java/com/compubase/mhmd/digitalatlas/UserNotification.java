@@ -2,8 +2,10 @@ package com.compubase.mhmd.digitalatlas;
 
 
 import android.app.Fragment;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,7 +33,7 @@ public class UserNotification extends Fragment {
     RecyclerView notificationList ;
     List<NotificationUser> notifications = new ArrayList<>();
 
-    String URL = "http://atlas.alosboiya.com.sa/atlas.asmx/select_all_note?";
+    String URL = "http://atlas.alosboiya.com.sa/atlasnew.asmx/select_all_note?";
 
     RequestQueue requestQueue;
     NotificationUserAdapter myAdapter;
@@ -50,6 +52,7 @@ public class UserNotification extends Fragment {
         return view;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -61,9 +64,12 @@ public class UserNotification extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         notificationList.setLayoutManager(layoutManager);
 
+        myAdapter = new NotificationUserAdapter( notifications);
+
         JSON_DATA_WEB_CALL();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void JSON_DATA_WEB_CALL(){
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,URL,
@@ -95,6 +101,9 @@ public class UserNotification extends Fragment {
 
     public void JSON_PARSE_DATA_AFTER_WEBCALL(String Jobj){
 
+        notifications.clear();
+        myAdapter.notifyDataSetChanged();
+
         try {
             JSONArray js = new JSONArray(Jobj);
 
@@ -104,13 +113,14 @@ public class UserNotification extends Fragment {
 
                 NotificationUser GetDataAdapter2 = new NotificationUser();
 
+                GetDataAdapter2.setID(childJSONObject.getString("id"));
                 GetDataAdapter2.setSender(childJSONObject.getString("sender"));
                 GetDataAdapter2.setTitle(childJSONObject.getString("head"));
                 GetDataAdapter2.setBody(childJSONObject.getString("body"));
 
                 notifications.add(GetDataAdapter2);
             }
-            myAdapter = new NotificationUserAdapter( notifications);
+
             notificationList.setAdapter(myAdapter);
 
             myAdapter.notifyDataSetChanged();

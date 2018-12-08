@@ -1,16 +1,10 @@
 package com.compubase.mhmd.digitalatlas;
 
-
-import android.os.Build;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -26,43 +20,28 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class AdminApproveList extends Fragment {
+public class ReviewerActivty extends AppCompatActivity {
 
     RecyclerView recyclerView;
     RecyclerView.Adapter myAdapter;
     RecyclerView.LayoutManager layoutManager;
     ArrayList<ApproveList> listApproved = new ArrayList<ApproveList>();
-    View view;
     RequestQueue requestQueue;
-    String URL = "http://atlas.alosboiya.com.sa//atlasnew.asmx/select_all_user_for_admin?";
-
-
-    public AdminApproveList() {
-        // Required empty public constructor
-    }
-
+    String URL = "http://atlas.alosboiya.com.sa/atlasnew.asmx/select_all_user_for_admin?";
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-         view = inflater.inflate(R.layout.fragment_admin_approve_list, container, false);
-        return view;
-    }
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_reviewer);
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        recyclerView =view.findViewById(R.id.approvedlist);
+        recyclerView = findViewById(R.id.approvedlist);
         recyclerView.setHasFixedSize(true);
-        layoutManager= new LinearLayoutManager(getContext());
+        layoutManager= new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         myAdapter = new ApproveListAdapter(listApproved);
         JSON_DATA_WEB_CALL();
     }
 
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
     public void JSON_DATA_WEB_CALL(){
 
         StringRequest stringRequest;
@@ -74,7 +53,6 @@ public class AdminApproveList extends Fragment {
                     }
                 },
                 new Response.ErrorListener() {
-                    @RequiresApi(api = Build.VERSION_CODES.M)
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
@@ -85,7 +63,7 @@ public class AdminApproveList extends Fragment {
                 }
         );
 
-        requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         requestQueue.add(stringRequest);
     }
@@ -122,10 +100,7 @@ public class AdminApproveList extends Fragment {
 
 
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     private void showMessage() {
-        Toast.makeText(getContext(), "No Connection", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "No Connection", Toast.LENGTH_LONG).show();
     }
-
-
 }

@@ -2,8 +2,10 @@ package com.compubase.mhmd.digitalatlas;
 
 
 import android.app.Fragment;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,15 +53,17 @@ public class AdminNotification extends Fragment {
         body = view.findViewById(R.id.body);
         send = view.findViewById(R.id.send);
         send.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
                 volleyconnect();
             }
         });
     }
+        @RequiresApi(api = Build.VERSION_CODES.M)
         public void volleyconnect()
         {
-            GET_JSON_DATA_HTTP_URL = "http://atlas.alosboiya.com.sa/atlas.asmx?op=note";
+            GET_JSON_DATA_HTTP_URL = "http://atlas.alosboiya.com.sa/atlasnew.asmx/note?";
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_JSON_DATA_HTTP_URL,
 
@@ -98,6 +102,7 @@ public class AdminNotification extends Fragment {
             requestQueue.add(stringRequest);
 
         }
+        @RequiresApi(api = Build.VERSION_CODES.M)
         private void showMessage(String _s) {
             Toast.makeText(getContext(), _s, Toast.LENGTH_LONG).show();
         }

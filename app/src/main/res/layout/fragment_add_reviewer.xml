@@ -6,26 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.compubase.mhmd.digitalatlas.Regestration"
     android:orientation="vertical">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="0dp"
-            android:background="#00bfff"
-            android:theme="?attr/actionBarTheme">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="Registration"
-                    android:textAlignment="center"
-                    android:textColor="#ffffff"
-                    android:textSize="30sp" />
-            </RelativeLayout>
-        </android.support.v7.widget.Toolbar>
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -49,7 +30,6 @@
                     android:visibility="gone"
                     android:background="@drawable/logowithname"/>
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -137,46 +117,23 @@
     </ScrollView>
 
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_margin="10dp">
+        <Button
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="16sp"
-            android:textColor="#000"
-            android:text="By Checking this box, i waive all claim of copyright in this work to Faculty of Medicine, KAU"/>
-
-        <CheckBox
-            android:id="@+id/checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_gravity="center_vertical"/>
-
-    </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:text="Add"
+            android:id="@+id/register"
+            android:textSize="30sp"
+            android:textColor="#ffffff"
+            android:background="@drawable/rounded_button"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_margin="10dp">
-            <Button
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:text="Register"
-                android:id="@+id/register"
-                android:textSize="30sp"
-                android:textColor="#ffffff"
-                android:background="@drawable/rounded_button"
-                android:layout_gravity="center"
-                />
-        </LinearLayout>
+            />
     </LinearLayout>
+</LinearLayout>

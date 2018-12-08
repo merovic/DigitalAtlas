@@ -94,7 +94,7 @@ public class Addfinding2 extends Fragment {
                 showPictureDialog();
             }
         });
-        finish = view.findViewById(R.id.toFinding3);
+        finish = view.findViewById(R.id.tofinish);
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

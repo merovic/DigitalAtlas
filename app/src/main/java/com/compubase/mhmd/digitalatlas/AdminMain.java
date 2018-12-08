@@ -2,15 +2,18 @@ package com.compubase.mhmd.digitalatlas;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class AdminMain extends AppCompatActivity {
-    ImageButton add, patientlisst, approve, notific;
+    ImageButton add, patientlisst, approve, notific, reviewer;
     TextView title;
+    Button logout , toimport;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +23,30 @@ public class AdminMain extends AppCompatActivity {
         final AdminApproveList adminApproveList = new AdminApproveList();
         final AdminNotification adminNotification = new AdminNotification();
         final PaientList paientList = new PaientList();
+        final AddReviewerActivity addReviewerActivity = new AddReviewerActivity();
+
         approve = findViewById(R.id.approve);
-        title = findViewById(R.id.title);
+        title = findViewById(R.id.titlmainadmin);
+        logout = findViewById(R.id.logout);
+        toimport = findViewById(R.id.toimportant);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent =new Intent(AdminMain.this , SignIn.class);
+                //startActivity(intent);
+                onBackPressed();
+            }
+        });
+
+
+
+        toimport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(AdminMain.this , Document.class);
+                startActivity(intent);
+            }
+        });
 
         title.setText("Add Finding(S)");
 
@@ -30,14 +55,6 @@ public class AdminMain extends AppCompatActivity {
         fragmentTransaction.replace(R.id.cotaineradmin,addFinfing1 );
         fragmentTransaction.commit();
 
-        //final AddPatientFragment addPatientFragment = new AddPatientFragment();
-        //final PatientListAdmin patientListAdmin = new  PatientListAdmin();
-        // PatientNotification patientNotification = new PatientNotification();
-        // final NotificationAdmin notificationAdmin = new NotificationAdmin();
-        //FragmentManager fragmentManager = getFragmentManager();
-        // FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        //fragmentTransaction.add(R.id.cotainer , frag);
-        //fragmentTransaction.commit();
 
         add = findViewById(R.id.addfinfingadmin);
         add.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +106,20 @@ public class AdminMain extends AppCompatActivity {
 
 
                 title.setText("Patient List");
+
+            }
+        });
+        reviewer = findViewById(R.id.addreviewer);
+        reviewer .setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.cotaineradmin,addReviewerActivity );
+                fragmentTransaction.commit();
+
+
+                title.setText("Add Reviewer");
 
             }
         });
