@@ -37,7 +37,6 @@ public class Add_Finding2ByAdmin extends AppCompatActivity {
     ImageButton add , list , notif , approve;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
